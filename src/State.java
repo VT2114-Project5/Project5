@@ -51,6 +51,16 @@ public class State {
 
 
     /**
+     * Getter method for the name field.
+     * 
+     * @return name field
+     */
+    public String getName() {
+        return name;
+    }
+
+
+    /**
      * This method returns the string representation of the State.
      *
      * @return string representation of the State
@@ -82,6 +92,31 @@ public class State {
      */
     public void sortByCFR() {
         // Need to create a cfr comparator for race
+    }
+
+
+    /**
+     * Checks if two races are equal.
+     * 
+     * @return whether the two races are equal or not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() == obj.getClass()) {
+            State other = (State)obj;
+            return this.getRaces().equals(other.getRaces()) && this.getName()
+                .equals(other.getName());
+        }
+        else {
+            return false;
+        }
+
     }
 
 }

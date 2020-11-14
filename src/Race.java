@@ -111,4 +111,30 @@ public class Race {
 
     }
 
+
+    /**
+     * Checks if two races are equal.
+     * 
+     * @return whether the two races are equal or not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() == obj.getClass()) {
+            Race other = (Race)obj;
+            return this.getCases() == other.getCases() && this
+                .getDeaths() == other.getDeaths() && this.getName().equals(other
+                    .getName()) && this.getCfr() == other.getCfr();
+        }
+        else {
+            return false;
+        }
+
+    }
+
 }

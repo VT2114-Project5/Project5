@@ -105,6 +105,7 @@ public class DocumentReader {
 
     /**
      * Getter method for the states field.
+     * 
      * @return states field
      */
     public LinkedList<State> getStates() {
