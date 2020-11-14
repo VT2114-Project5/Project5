@@ -18,10 +18,10 @@ import java.util.LinkedList;
 public class Input {
 
     /**
-     * This is the main method of the project. This is what eclipse exacutes.
+     * This is the main method of the project.
      * 
-     * @param args
-     *            the input
+     * @param args 
+     *            File where the data can be found
      * @throws FileNotFoundException
      *             if file is not found
      */

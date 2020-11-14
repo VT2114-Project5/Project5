@@ -1,5 +1,4 @@
 package prj5;
-
 import java.util.Comparator;
 
 // Virginia Tech Honor Code Pledge:
@@ -7,7 +6,7 @@ import java.util.Comparator;
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
-// -- olsenbudanur
+// -- olsenbudanur, adamoswald
 
 /**
  * This class represents the individual Races from the Covid-19 data. It stores
@@ -15,6 +14,9 @@ import java.util.Comparator;
  * 
  *
  * @author Olsen Budanur olsenbudanur
+ * @version 11/14/2020
+ * 
+ * @author Adam Oswald (adamoswald) 
  * @version 11/14/2020
  */
 public class Race {
@@ -52,14 +54,14 @@ public class Race {
      *            the deaths of the Race
      * @param cases
      *            the cases of the Race
-     * @return the CFR
+     * @return a double of the CFR
      */
     private double calculateCfr(int deaths, int cases) {
         if (deaths == -1 || cases == -1) {
             return -1;
         }
         double cfr = (deaths * 1.0 / cases) * 100;
-        double cfrClean = (int)(Math.round(cfr * 10)) / 10.0;
+        double cfrClean = (Math.round(cfr * 10)) / 10.0;
         return cfrClean;
     }
 
@@ -67,7 +69,7 @@ public class Race {
     /**
      * This is a getter method for the cases field.
      * 
-     * @return cases field
+     * @return Integer of the number of cases
      */
     public int getCases() {
         return cases;
@@ -77,7 +79,7 @@ public class Race {
     /**
      * This is a getter method for the deaths field.
      * 
-     * @return deaths field
+     * @return Integer of the number of deaths
      */
     public int getDeaths() {
         return deaths;
@@ -85,9 +87,10 @@ public class Race {
 
 
     /**
-     * This is a getter method for the cfr field.
+     * This is a getter method for the cfr field. Note that cfr gets
+     * initially calculated during the constructor.
      * 
-     * @return cfr field
+     * @return Returns the double of the CFR
      */
     public double getCfr() {
         return cfr;
@@ -97,7 +100,7 @@ public class Race {
     /**
      * This is a getter method for the name field.
      * 
-     * @return name field
+     * @return String of the name of the race
      */
     public String getName() {
         return name;
@@ -116,7 +119,7 @@ public class Race {
         builder.append(": ");
         builder.append(cases);
         builder.append(" cases, ");
-        builder.append(cfr);
+        builder.append(rewriteCfr());
         builder.append("%");
         builder.append(" CFR");
         return builder.toString();
@@ -126,6 +129,9 @@ public class Race {
 
     /**
      * Checks if two races are equal.
+     * 
+     * @param obj 
+     *          The other object to be compared.
      * 
      * @return whether the two races are equal or not
      */
@@ -139,23 +145,41 @@ public class Race {
         }
         if (this.getClass() == obj.getClass()) {
             Race other = (Race)obj;
-            return this.getCases() == other.getCases() && this
-                .getDeaths() == other.getDeaths() && this.getName().equals(other
-                    .getName()) && this.getCfr() == other.getCfr();
+            
+            return this.getCases() == other.getCases() 
+                && this.getDeaths() == other.getDeaths() 
+                && this.getName().equals(other.getName()) 
+                && this.getCfr() == other.getCfr();
         }
         else {
             return false;
         }
 
     }
+    
+    /**
+     * Helper method to remove the decimal point if the CFR can be represented
+     * as an integer.
+     * 
+     * @return Number object of the CFR.
+     */
+    private Number rewriteCfr() {
+        if (cfr > Math.floor(cfr)) {
+            return cfr;
+        }
+        else {
+            return (int)cfr;
+        }
+    }
 
 
     /**
      * This is the comparator that is used to sort races in alphabetical order.
+     * Compares by cases if both CFR's are -1.
      * 
      * @return a CFRComparator
      */
-    static Comparator<Race> CFRComparator() {
+    public static Comparator<Race> CFRComparator() {
         return new Comparator<Race>() {
 
             /**
@@ -163,8 +187,12 @@ public class Race {
              */
             @Override
             public int compare(Race thisObject, Race other) {
+                if (thisObject.getCfr() == -1 && other.getCfr() == -1) {
+                    return Integer.compare(
+                        other.getCases(), thisObject.getCases());
+                }
+                
                 double doubleCfr = (other.getCfr() - thisObject.getCfr()) * 10;
-
                 return (int)doubleCfr;
             }
 
@@ -177,7 +205,7 @@ public class Race {
      * 
      * @return an AlphaComparator
      */
-    static Comparator<Race> AlphaComparator() {
+    public static Comparator<Race> AlphaComparator() {
         return new Comparator<Race>() {
 
             /**
