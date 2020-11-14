@@ -1,3 +1,4 @@
+package prj5;
 // Virginia Tech Honor Code Pledge:
 //
 // As a Hokie, I will conduct myself with honor and integrity at all times.
@@ -14,7 +15,7 @@ import java.util.LinkedList;
  * @author Olsen Budanur olsenbudanur
  * @version 11/14/2020
  */
-public class ProjectRunner {
+public class Input {
 
     /**
      * This is the main method of the project. This is what eclipse exacutes.
