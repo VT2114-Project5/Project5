@@ -5,6 +5,7 @@
 // do.
 // -- olsenbudanur
 
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -68,13 +69,26 @@ public class State {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
+
+        this.sortAlpha();
         builder.append(name);
         builder.append("\n");
+
         for (Race race : list) {
             builder.append(race.toString());
             builder.append("\n");
         }
 
+        builder.append("=====");
+        builder.append("\n");
+        this.sortByCFR();
+
+        for (Race race : list) {
+            builder.append(race.toString());
+            builder.append("\n");
+        }
+
+        builder.append("=====");
         return builder.toString();
     }
 
@@ -83,7 +97,7 @@ public class State {
      * This method sorts the Race's in alphabetical order.
      */
     public void sortAlpha() {
-        // Need to create an alpha comparator for race
+        Collections.sort(list, Race.AlphaComparator());
     }
 
 
@@ -91,7 +105,7 @@ public class State {
      * This method sorts the Race's in CFR order.
      */
     public void sortByCFR() {
-        // Need to create a cfr comparator for race
+        Collections.sort(list, Race.CFRComparator());
     }
 
 

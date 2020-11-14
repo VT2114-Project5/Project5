@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 // Virginia Tech Honor Code Pledge:
 //
 // As a Hokie, I will conduct myself with honor and integrity at all times.
@@ -5,6 +7,14 @@
 // do.
 // -- olsenbudanur
 
+/**
+ * This class represents the individual Races from the Covid-19 data. It stores
+ * the information for that specific race.
+ * 
+ *
+ * @author Olsen Budanur olsenbudanur
+ * @version 11/14/2020
+ */
 public class Race {
     private String name;
     private int deaths;
@@ -135,6 +145,49 @@ public class Race {
             return false;
         }
 
+    }
+
+
+    /**
+     * This is the comparator that is used to sort races in alphabetical order.
+     * 
+     * @return a CFRComparator
+     */
+    static Comparator<Race> CFRComparator() {
+        return new Comparator<Race>() {
+
+            /**
+             * Compares the two objects by their Cfr
+             */
+            @Override
+            public int compare(Race thisObject, Race other) {
+                double doubleCfr = (other.getCfr() - thisObject.getCfr()) * 10;
+
+                return (int)doubleCfr;
+            }
+
+        };
+    }
+
+
+    /**
+     * This is the comparator that is used to sort races in alphabetical order.
+     * 
+     * @return an AlphaComparator
+     */
+    static Comparator<Race> AlphaComparator() {
+        return new Comparator<Race>() {
+
+            /**
+             * Compares the two objects by their name
+             */
+            @Override
+            public int compare(Race thisObject, Race other) {
+
+                return thisObject.getName().compareTo(other.getName());
+            }
+
+        };
     }
 
 }

@@ -8,6 +8,12 @@
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
 
+/**
+ * This is the class that houses the main method and runs the project.
+ * 
+ * @author Olsen Budanur olsenbudanur
+ * @version 11/14/2020
+ */
 public class ProjectRunner {
 
     /**
@@ -20,13 +26,12 @@ public class ProjectRunner {
      */
     public static void main(String[] args) throws FileNotFoundException {
 
-        DocumentReader reader = new DocumentReader(
-            "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
+        DocumentReader reader = new DocumentReader(args[0]);
 
         LinkedList<State> states = reader.getStates();
 
         for (State state : states) {
-            System.out.print(state.toString());
+            System.out.println(state.toString());
 
         }
     }
