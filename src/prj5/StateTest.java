@@ -8,6 +8,7 @@ package prj5;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import student.TestCase
 
 /**
  * This class represents the individual states from the Covid-19 data. It stores
@@ -16,3 +17,6 @@ import java.util.LinkedList;
  * @author Ariel Carter
  * @version 11/17/2020
  */
+public StateTest extends TestCase{
+    
+}
