@@ -1,3 +1,10 @@
+// Virginia Tech Honor Code Pledge:
+//
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- adamoswald
+
 package prj5;
 
 
@@ -21,8 +28,6 @@ public interface ListInterface<T>
      *            the object to add
      * @throws IndexOutOfBoundsException
      *             if index is less than zero or greater than size
-     * @throws IllegalArgumentException 
-     *             if obj is null
      */
     public void add(int index, T obj);
 
@@ -56,9 +61,9 @@ public interface ListInterface<T>
     public int size();
     
     /**
-     * Checks if the array is empty
+     * Checks if the list is empty
      *
-     * @return if the array is empty
+     * @return if the list is empty
      */
     public boolean isEmpty();
 
@@ -100,15 +105,12 @@ public interface ListInterface<T>
      * @param obj
      *            the object to check for
      * @return true if it contains the object
-     * @throws IndexOutOfBoundsException
-     *             if an element does not exist at the given index
      */
     public boolean contains(T obj);
 
     /**
      * Removes all of the elements from the list
      *
-     * @postcondition size = 0 and all of the nodes are removed
      */
     public void clear();
 
