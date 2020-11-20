@@ -1,13 +1,10 @@
 package prj5;
-// Virginia Tech Honor Code Pledge:
-//
+// Virginia Tech Honor Code Pledge://
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
 // -- olsenbudanur
 
-import java.util.Collections;
-import java.util.LinkedList;
 
 /**
  * This class represents the individual states from the Covid-19 data. It stores
@@ -98,7 +95,7 @@ public class State {
      * This method sorts the Race's in alphabetical order.
      */
     public void sortAlpha() {
-        Collections.sort(list, Race.AlphaComparator());
+        LinkedList.sort(list, Race.AlphaComparator());
     }
 
 
@@ -106,7 +103,7 @@ public class State {
      * This method sorts the Race's in CFR order.
      */
     public void sortByCFR() {
-        Collections.sort(list, Race.CFRComparator());
+        LinkedList.sort(list, Race.CFRComparator());
     }
 
 
