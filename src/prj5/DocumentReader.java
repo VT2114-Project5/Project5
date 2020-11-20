@@ -9,7 +9,6 @@ package prj5;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.LinkedList;
 
 /**
  * This is the reader class that imports an text file containing the Covid-19

@@ -7,7 +7,6 @@ package prj5;
 // -- olsenbudanur
 
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
 
 /**
  * This is the class that houses the main method and runs the project.
