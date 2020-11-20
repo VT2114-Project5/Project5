@@ -186,7 +186,10 @@ public class Race {
              * Compares the two objects by their Cfr
              */
             @Override
-            public int compare(Race thisObject, Race other) {             
+            public int compare(Race thisObject, Race other) {
+                if (thisObject.getCfr() == other.getCfr()) {
+                    return thisObject.getName().compareTo(other.getName());
+                }
                 double doubleCfr = (other.getCfr() - thisObject.getCfr()) * 10;
                 return (int)doubleCfr;
             }
