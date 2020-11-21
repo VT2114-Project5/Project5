@@ -6,9 +6,7 @@ package prj5;
 // do.
 // -- arielc19
 
-import java.util.Collections;
-import java.util.LinkedList;
-import student.TestCase
+import student.TestCase;
 
 /**
  * This class tests all of the methods in the LinkedList Class
@@ -31,8 +29,8 @@ public class LinkedListTest<T> extends TestCase {
      */
 
     public void setUp() {
-        list1 = new LinkedList();
-        list2 = new LinkedList();
+        list1 = new LinkedList<Race>();
+        list2 = new LinkedList<Race>();
 
         white = new Race("white", 5000, 10000);
         black = new Race("black", 19764, 35678);
@@ -50,45 +48,32 @@ public class LinkedListTest<T> extends TestCase {
         list1.add(0, white);
         assertFalse(list1.isEmpty());
         list1.add(1, black);
-        assertEquals(2, list1.size())
+        assertEquals(2, list1.size());
+        list1.add(0, asian);
+        assertEquals(3, list1.size());
+        list1.add(2, white);
+        
+        assertEquals(asian, list1.getEntry(0));
+        assertEquals(white, list1.getEntry(1));
+        assertEquals(white, list1.getEntry(2));
+        assertEquals(black, list1.getEntry(3));
         
         Exception exception = null;
         try {
-            list1.add(3, latinx);
+            list1.add(5, latinx);
+        }
+        catch (IndexOutOfBoundsException e) {
+            exception = e;
+        }
+        assertNotNull(exception); 
+        exception = null;
+        try {
+            list1.add(-1, latinx);
         }
         catch (IndexOutOfBoundsException e) {
             exception = e;
         }
         assertNotNull(exception);  
-    }
-
-
-    /**
-     * tests getNodeBefore() method
-     */
-
-    public void testGetNodeBefore() {
-        list1.add(white);
-        list1.add(black);
-        assertEquals(white, list1.getNodeBefore(1));
-
-        Exception exception = null;
-        try {
-            list1.getNodeBefore(4);
-        }
-        catch (IndexOutOfBoundsException e) {
-            exception = e;
-        }
-        assertNotNull(exception);
-
-        exception = null;
-        try {
-            list1.getNodeBefore(-1);
-        }
-        catch (IndexOutOfBoundsException e) {
-            exception = e;
-        }
-        assertNotNull(exception);
     }
 
 
@@ -113,6 +98,23 @@ public class LinkedListTest<T> extends TestCase {
         list1.add(black);
         assertEquals(white, list1.getEntry(0));
         assertEquals(black, list1.getEntry(1));
+        
+        Exception exception = null;
+        try {
+            list1.getEntry(-1);
+        }
+        catch (IndexOutOfBoundsException e) {
+            exception = e;
+        }
+        assertNotNull(exception); 
+        exception = null;
+        try {
+            list1.getEntry(5);
+        }
+        catch (IndexOutOfBoundsException e) {
+            exception = e;
+        }
+        assertNotNull(exception); 
     }
 
 
@@ -149,10 +151,14 @@ public class LinkedListTest<T> extends TestCase {
         list1.add(white);
         list1.add(black);
         list1.add(latinx);
-        assertTrue(list1.remove(white));
-        assertFalse(list1.remove(asian));
+        list1.add(asian);
         assertTrue(list1.remove(latinx));
+        assertTrue(list1.remove(asian));
+        assertFalse(list1.remove(asian));
+        assertTrue(list1.remove(white));
         assertEquals(1, list1.size());
+        assertTrue(list1.remove(black));
+        assertEquals(0, list1.size());
     }
 
 
@@ -163,8 +169,8 @@ public class LinkedListTest<T> extends TestCase {
         list1.add(white);
         list1.add(black);
         list1.add(latinx);
-        assertTrue(list1.remove(1));
-        assertTrue(list1.remove(2));
+        assertTrue(list1.remove(0).equals(white));
+        assertTrue(list1.remove(1).equals(latinx));
         assertEquals(1, list1.size());
 
         Exception exception = null;
@@ -198,7 +204,7 @@ public class LinkedListTest<T> extends TestCase {
         list1.replace(0, asian);
         list1.replace(2, white);
         assertTrue(list1.contains(white));
-        assertFalse(list.contains(latinx));
+        assertFalse(list1.contains(latinx));
         assertEquals(3, list1.size());
 
         Exception exception = null;
@@ -255,10 +261,13 @@ public class LinkedListTest<T> extends TestCase {
      */
 
     public void testToString() {
+        assertEquals("{}", list1.toString());
         list1.add(white);
         list1.add(black);
         list1.add(latinx);
-        assertEquals("{white, black, latinx}", list1.toString());
+        assertEquals("{white: 10000 cases, 50% CFR, "
+            + "black: 35678 cases, 55.4% CFR, "
+            + "latinx: 40678 cases, 20.8% CFR}", list1.toString());
     }
 
 

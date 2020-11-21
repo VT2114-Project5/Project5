@@ -148,8 +148,7 @@ public class Race {
             
             return this.getCases() == other.getCases() 
                 && this.getDeaths() == other.getDeaths() 
-                && this.getName().equals(other.getName()) 
-                && this.getCfr() == other.getCfr();
+                && this.getName().equals(other.getName());
         }
         else {
             return false;

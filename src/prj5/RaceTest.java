@@ -6,9 +6,7 @@ package prj5;
 // do.
 // -- arielc19
 
-import java.util.Collections;
-import java.util.LinkedList;
-import student.TestCase
+import student.TestCase;
 
 /**
  * This class tests all of the methods in the Race Class
@@ -31,7 +29,7 @@ public class RaceTest extends TestCase {
      * sets up the test cases
      */
     
-    public setUp() {
+    public void setUp() {
         white=new Race("white", 5000, 10000);
         black=new Race("black", 19764, 35678);
         asian=new Race("asian", 6578, 12679);
@@ -72,10 +70,16 @@ public class RaceTest extends TestCase {
      */
 
     public void testGetCfr() {
-        assertEquals(50.0, white.getCfr);
-        assertEquals(55.4, black.getCfr);
-        assertEquals(51.9, asian.getCfr);
-        assertEquals(20.8, latinx.getCfr);
+        assertEquals(50.0, white.getCfr(), 0.001);
+        assertEquals(55.4, black.getCfr(), 0.001);
+        assertEquals(51.9, asian.getCfr(), 0.001);
+        assertEquals(20.8, latinx.getCfr(), 0.001);
+        white = new Race("white", -1, 500);
+        black = new Race("black", 9283, -1);
+        asian = new Race("Asian", -1, -1);
+        assertEquals(-1, white.getCfr(), 0.001);
+        assertEquals(-1, black.getCfr(), 0.001);
+        assertEquals(-1, asian.getCfr(), 0.001);
     }
 
 
@@ -96,10 +100,10 @@ public class RaceTest extends TestCase {
      */
 
     public void testToString() {
-        assertEquals("white: 10000 cases, 50.0% CFR", white.toString());
+        assertEquals("white: 10000 cases, 50% CFR", white.toString());
         assertEquals("black: 35678 cases, 55.4% CFR", black.toString());
-        assertEquals("asian: 12679 cases, 51.9% CFR", white.toString());
-        assertEquals("latinx: 40678 cases, 20.8% CFR", white.toString());
+        assertEquals("asian: 12679 cases, 51.9% CFR", asian.toString());
+        assertEquals("latinx: 40678 cases, 20.8% CFR", latinx.toString());
     }
 
 
@@ -116,15 +120,11 @@ public class RaceTest extends TestCase {
         assertFalse(white.equals(white2));
         assertFalse(asian.equals(black2));
         assertTrue(asian.equals(asian2));
-
-    }
-
-
-    /**
-     * tests rewriteCfr() method
-     */
-
-    public void testRewriteCfr() {
+        
+        Race whiteAlmost = new Race("white", 429, 10000);
+        Race whiteAlmost2 = new Race("white", 858, 20000);
+        assertFalse(white.equals(whiteAlmost));
+        assertFalse(white.equals(whiteAlmost2));
 
     }
 

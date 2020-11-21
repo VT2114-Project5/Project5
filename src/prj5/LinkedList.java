@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
  * A list implementation using linked chains. Has a head and tail, but the
  * chain is singly-linked.
  * 
- * @author Adam Oswald (adamoswald
+ * @author Adam Oswald (adamoswald)
  * @version 11/19/2020
  *
  * @param <T>
@@ -48,7 +48,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         }
 
         Node<T> newNode = new Node<T>(obj);
-        if (isEmpty() || index == 0) {
+        if (index == 0) {
             newNode.setNext(head);
             head = newNode;
             if (isEmpty()) {
@@ -157,10 +157,14 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
 
         while (currentNode.next != null) {
             if (currentNode.next.getData().equals(obj)) {
+                System.out.println(tail.getData().toString());
                 if (currentNode.next == tail) {
                     tail = currentNode;
+                    currentNode.next = null;
                 }
-                currentNode.next = currentNode.next.next;
+                else {
+                    currentNode.next = currentNode.next.next;
+                }
                 size--;
                 return true;
             }
@@ -177,18 +181,23 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
      *             if there is not an element at the index
      */
     @Override
-    public void remove(int index) {
+    public T remove(int index) {
         if (index < 0 || size < index) {
             throw new IndexOutOfBoundsException("Index is not within bounds.");
         }
+        T temp = null;
         if (index == 0) {
+            temp = head.getData();
             head = head.next;
+
         }
         else {
             Node<T> nodeBefore = getNodeBefore(index);
+            temp = nodeBefore.next.getData();
             nodeBefore.next = nodeBefore.next.next;
         }
         size--;
+        return temp;
 
     }
 
@@ -253,7 +262,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
 
     /**
      * Prints the contents as a String. Items are in curly brackets ("{}"),
-     * with each item seperate by a comma (",").
+     * with each item separate by a comma (",").
      * 
      * @return String representation of the list
      */
@@ -338,8 +347,8 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
      *          The list to be sorted.
      */
     public static <T> void sort(LinkedList<T> list, 
-                                Comparator<? super T> comp) {
-        
+        Comparator<? super T> comp) {
+
         Iterator<T> iter = list.iterator();
         LinkedList<T> sortedList = new LinkedList<T>();
         while (iter.hasNext()) {
@@ -347,7 +356,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
             int index = 0;
 
             while (index < sortedList.size 
-                && comp.compare(curElement, sortedList.getEntry(index)) >= 0  ) {
+                && comp.compare(curElement, sortedList.getEntry(index)) >= 0) {
 
                 index++;
             }

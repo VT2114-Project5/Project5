@@ -44,7 +44,12 @@ public class State {
      * @return Race's as an array
      */
     public Race[] getRaces() {
-        return (Race[])list.toArray();
+        Object[] temp = list.toArray();
+        Race[] raceArr = new Race[temp.length];
+        for (int i = 0; i < temp.length; i++) {
+            raceArr[i] = (Race)temp[i];
+        }
+        return raceArr;
     }
 
 
@@ -123,9 +128,24 @@ public class State {
         }
         if (this.getClass() == obj.getClass()) {
             State other = (State)obj;
-
-            return this.getRaces().equals(other.getRaces()) && this.getName()
-                .equals(other.getName());
+            
+            // Check if name or size of Race list does not equal
+            if (this.getRaces().length != other.getRaces().length
+                || !this.getName().equals(other.getName())) {
+                
+                return false;
+            }
+            
+            Race[] thisArr = this.getRaces();
+            Race[] otherArr = other.getRaces();
+            
+            // Then check each element of the array.
+            for (int i = 0; i < thisArr.length; i++) {
+                if (!thisArr[i].equals(otherArr[i])) {
+                    return false;
+                }
+            }
+            return true;
         }
         else {
             return false;

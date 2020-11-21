@@ -82,7 +82,7 @@ public interface ListInterface<T>
      * @throws IndexOutOfBoundsException
      *             if there is not an element at the index
      */
-    public void remove(int index);
+    public T remove(int index);
 
     
     /**
