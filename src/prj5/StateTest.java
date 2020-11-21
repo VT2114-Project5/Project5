@@ -18,7 +18,7 @@ import student.TestCase;
  * @version 11/18/2020
  */
 
-public class StateTest extends TestCase{
+public class StateTest extends TestCase {
     private Race white;
     private Race black;
     private Race asian;
@@ -100,10 +100,12 @@ public class StateTest extends TestCase{
      * tests equals() method
      */
     public void testEquals() {
+        State nullState = null;
+        
         state1.setRaces(list1);
         state2.setRaces(list2);
         assertTrue(state1.equals(state1));
-        assertFalse(state1.equals(null));
+        assertFalse(state1.equals(nullState));
         assertFalse(state1.equals("Hello"));
         assertFalse(state1.equals(state2));
         

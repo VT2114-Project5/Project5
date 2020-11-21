@@ -19,22 +19,22 @@ public class State {
     /**
      * This is the constructor of the State class. It gives the state a name.
      * 
-     * @param name
+     * @param nme
      *            the name of the state
      */
-    public State(String name) {
-        this.name = name;
+    public State(String nme) {
+        name = nme;
     }
 
 
     /**
      * This method sets the Race's of a state.
      * 
-     * @param list
+     * @param lst
      *            the Race's of a state
      */
-    public void setRaces(LinkedList<Race> list) {
-        this.list = list;
+    public void setRaces(LinkedList<Race> lst) {
+        list = lst;
     }
 
 
@@ -99,7 +99,7 @@ public class State {
      * This method sorts the Race's in alphabetical order.
      */
     public void sortAlpha() {
-        LinkedList.sort(list, Race.AlphaComparator());
+        LinkedList.sort(list, Race.alphaComparator());
     }
 
 
@@ -107,7 +107,7 @@ public class State {
      * This method sorts the Race's in CFR order.
      */
     public void sortByCFR() {
-        LinkedList.sort(list, Race.CFRComparator());
+        LinkedList.sort(list, Race.cfrComparator());
     }
 
 

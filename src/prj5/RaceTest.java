@@ -28,16 +28,16 @@ public class RaceTest extends TestCase {
     /**
      * sets up the test cases
      */
-    
+
     public void setUp() {
-        white=new Race("white", 5000, 10000);
-        black=new Race("black", 19764, 35678);
-        asian=new Race("asian", 6578, 12679);
-        latinx=new Race("latinx", 8467, 40678);
-        
-        white2=new Race("white", 19764, 100000);
-        black2=new Race("black", 6578, 12679);
-        asian2= new Race("asian", 6578, 12679);
+        white = new Race("white", 5000, 10000);
+        black = new Race("black", 19764, 35678);
+        asian = new Race("asian", 6578, 12679);
+        latinx = new Race("latinx", 8467, 40678);
+
+        white2 = new Race("white", 19764, 100000);
+        black2 = new Race("black", 6578, 12679);
+        asian2 = new Race("asian", 6578, 12679);
     }
 
 
@@ -112,37 +112,21 @@ public class RaceTest extends TestCase {
      */
 
     public void testEquals() {
+        Race nullRace = null;
+
         assertTrue(white.equals(white));
-        assertFalse(black.equals(null));
+        assertFalse(black.equals(nullRace));
         assertFalse(asian.equals("Hello"));
         assertFalse(white.equals(latinx));
 
         assertFalse(white.equals(white2));
         assertFalse(asian.equals(black2));
         assertTrue(asian.equals(asian2));
-        
+
         Race whiteAlmost = new Race("white", 429, 10000);
         Race whiteAlmost2 = new Race("white", 858, 20000);
         assertFalse(white.equals(whiteAlmost));
         assertFalse(white.equals(whiteAlmost2));
-
-    }
-
-
-    /**
-     * tests CFRComparator() method
-     */
-
-    public void testCFRComparator() {
-
-    }
-
-
-    /**
-     * tests AlphaComparator() method
-     */
-
-    public void testAlphaComparator() {
 
     }
 

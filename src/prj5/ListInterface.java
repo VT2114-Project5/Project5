@@ -13,31 +13,29 @@ package prj5;
  *
  * @author Adam Oswald (adamoswald)
  * @param <T>
- *            The class that you want it to store
+ *            The data type
  * @version 11/18/2020
  */
 public interface ListInterface<T>
 {
 
     /**
-     * Adds the object to the position in the list
+     * Adds an item to a selected index of the list.
      *
      * @param index
-     *            where to add the object
+     *            index to add the item
      * @param obj
-     *            the object to add
+     *            the item to add
      * @throws IndexOutOfBoundsException
      *             if index is less than zero or greater than size
      */
     public void add(int index, T obj);
 
     /**
-     * Adds the object to the end of the list.
+     * Adds the item to the end of the list.
      *
      * @param obj
-     *            the object to add
-     * @throws IllegalArgumentException 
-     *             if obj is null
+     *            the item to add
      */
     public void add(T obj);
 
@@ -79,6 +77,9 @@ public interface ListInterface<T>
     /**
      * Removes the object at the given position
      *
+     * @param index
+     *              Index to be removed
+     * @return The item that was just removed.s
      * @throws IndexOutOfBoundsException
      *             if there is not an element at the index
      */

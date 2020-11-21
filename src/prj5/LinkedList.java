@@ -19,6 +19,7 @@ import java.util.NoSuchElementException;
  * @version 11/19/2020
  *
  * @param <T>
+ *          The data type
  */
 public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
 
@@ -157,7 +158,6 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
 
         while (currentNode.next != null) {
             if (currentNode.next.getData().equals(obj)) {
-                System.out.println(tail.getData().toString());
                 if (currentNode.next == tail) {
                     tail = currentNode;
                     currentNode.next = null;
@@ -436,8 +436,14 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
          */
         @Override
         public void remove() {
-            if (prevNode.next != cursorNode || prevNode == null) {
+            if (prevNode == null || prevNode.next != cursorNode) {
                 throw new IllegalStateException("Cursor not on active element");
+            }
+            if (prevNode.next == tail) {
+                tail = prevNode;
+            }
+            if (prevNode.next == head) {
+                head = head.next;
             }
             prevNode.next = cursorNode.next;
             size--;

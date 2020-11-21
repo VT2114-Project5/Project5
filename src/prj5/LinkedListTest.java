@@ -4,8 +4,9 @@ package prj5;
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
-// -- arielc19
+// -- arielc19, adamoswald
 
+import java.util.Iterator;
 import student.TestCase;
 
 /**
@@ -13,9 +14,12 @@ import student.TestCase;
  * 
  * @author Ariel Carter
  * @version 11/17/2020
+ * 
+ * @author Adam Oswald
+ * @version 11/18/2020
  */
 
-public class LinkedListTest<T> extends TestCase {
+public class LinkedListTest extends TestCase {
     private LinkedList<Race> list1;
     private LinkedList<Race> list2;
 
@@ -42,7 +46,7 @@ public class LinkedListTest<T> extends TestCase {
     /**
      * tests add(int index, T obj) method
      */
-    
+
     public void testAdd() {
         assertTrue(list1.isEmpty());
         list1.add(0, white);
@@ -52,12 +56,12 @@ public class LinkedListTest<T> extends TestCase {
         list1.add(0, asian);
         assertEquals(3, list1.size());
         list1.add(2, white);
-        
+
         assertEquals(asian, list1.getEntry(0));
         assertEquals(white, list1.getEntry(1));
         assertEquals(white, list1.getEntry(2));
         assertEquals(black, list1.getEntry(3));
-        
+
         Exception exception = null;
         try {
             list1.add(5, latinx);
@@ -98,7 +102,7 @@ public class LinkedListTest<T> extends TestCase {
         list1.add(black);
         assertEquals(white, list1.getEntry(0));
         assertEquals(black, list1.getEntry(1));
-        
+
         Exception exception = null;
         try {
             list1.getEntry(-1);
@@ -279,9 +283,11 @@ public class LinkedListTest<T> extends TestCase {
         list1.add(white);
         list1.add(black);
         list1.add(latinx);
-
+        
+        LinkedList<Race> nullList = null;
+        
         assertTrue(list1.equals(list1));
-        assertFalse(list1.equals(null));
+        assertFalse(list1.equals(nullList));
         assertFalse(list1.equals("Hello"));
 
         list2.add(white);
@@ -327,6 +333,57 @@ public class LinkedListTest<T> extends TestCase {
      */
 
     public void testIterator() {
-        // TO_DO
+        list1.add(white);
+        list1.add(black);
+        list1.add(latinx);
+        list1.add(asian);
+        list1.add(black);
+        Iterator<Race> iter = list1.iterator();
+        assertEquals(list1.size(), 5);
+        try {
+            iter.remove();
+            fail("Remove was successful when iterator was just initialized");
+        }
+        catch (Exception e) {
+            // This catch block has been intentionally left blank.
+        }
+        
+        assertTrue(iter.hasNext());
+        assertEquals(iter.next(), white);
+        iter.remove();
+        
+        try {
+            iter.remove();
+            fail("Remove was successful on an already removed element");
+        }
+        catch (Exception e) {
+            // This catch block has been intentionally left blank.
+        }
+        assertEquals(list1.size(), 4);
+        assertEquals(list1.getEntry(0), black);
+        assertTrue(iter.hasNext());
+        assertEquals(iter.next(), black);
+        iter.remove();
+        assertEquals(list1.getEntry(0), latinx);
+        assertEquals(iter.next(), latinx);
+        assertEquals(iter.next(), asian);
+        assertEquals(iter.next(), black);
+        assertEquals(list1.getEntry(0), latinx);
+        assertEquals(list1.getEntry(1), asian);
+        assertEquals(list1.getEntry(2), black);
+        iter.remove();
+        assertFalse(iter.hasNext());
+        
+        try {
+            iter.next();
+            fail("Next was successful at end of list");
+        }
+        catch (Exception e) {
+            // This catch block has been intentionally left blank.
+        }
+        // Ensuring tail gets updated
+        list1.add(latinx);
+        assertEquals(list1.getEntry(2), latinx);
+        
     }
 }

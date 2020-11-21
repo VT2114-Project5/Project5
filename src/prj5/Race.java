@@ -30,17 +30,17 @@ public class Race {
      * the desired name, deaths, and cases. It also calculates the CFR of the
      * Race given the deaths and cases.
      * 
-     * @param name
+     * @param nme
      *            the name of the Race
-     * @param deaths
+     * @param dths
      *            the deaths of the Race
-     * @param cases
+     * @param cses
      *            the cases of the Race
      */
-    public Race(String name, int deaths, int cases) {
-        this.name = name;
-        this.deaths = deaths;
-        this.cases = cases;
+    public Race(String nme, int dths, int cses) {
+        name = nme;
+        deaths = dths;
+        cases = cses;
         cfr = calculateCfr(deaths, cases);
 
     }
@@ -50,18 +50,18 @@ public class Race {
      * This is a helper method that calculates the CFR of the race. If the
      * deaths and/or cases are not defined, the CFR is set to be -1.
      * 
-     * @param deaths
+     * @param dths
      *            the deaths of the Race
-     * @param cases
+     * @param cses
      *            the cases of the Race
      * @return a double of the CFR
      */
-    private double calculateCfr(int deaths, int cases) {
-        if (deaths == -1 || cases == -1) {
+    private double calculateCfr(int dths, int cses) {
+        if (dths == -1 || cses == -1) {
             return -1;
         }
-        double cfr = (deaths * 1.0 / cases) * 100;
-        double cfrClean = (Math.round(cfr * 10)) / 10.0;
+        double unroundCfr = (deaths * 1.0 / cases) * 100;
+        double cfrClean = (Math.round(unroundCfr * 10)) / 10.0;
         return cfrClean;
     }
 
@@ -178,7 +178,7 @@ public class Race {
      * 
      * @return a CFRComparator
      */
-    public static Comparator<Race> CFRComparator() {
+    public static Comparator<Race> cfrComparator() {
         return new Comparator<Race>() {
 
             /**
@@ -202,7 +202,7 @@ public class Race {
      * 
      * @return an AlphaComparator
      */
-    public static Comparator<Race> AlphaComparator() {
+    public static Comparator<Race> alphaComparator() {
         return new Comparator<Race>() {
 
             /**
