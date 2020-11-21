@@ -22,11 +22,10 @@ public class RaceTest extends TestCase {
     private Race black;
     private Race asian;
     private Race latinx;
-    
+
     private Race white2;
     private Race black2;
     private Race asian2;
-    
 
     /**
      * sets up the test cases
@@ -98,25 +97,53 @@ public class RaceTest extends TestCase {
 
     public void testToString() {
         assertEquals("white: 10000 cases, 50.0% CFR", white.toString());
-        assertEquals("blake: 35678 cases, 55.4% CFR", black.toString());
+        assertEquals("black: 35678 cases, 55.4% CFR", black.toString());
         assertEquals("asian: 12679 cases, 51.9% CFR", white.toString());
         assertEquals("latinx: 40678 cases, 20.8% CFR", white.toString());
     }
-    
+
+
     /**
      * tests equals() method
      */
-    
+
     public void testEquals() {
         assertTrue(white.equals(white));
         assertFalse(black.equals(null));
         assertFalse(asian.equals("Hello"));
         assertFalse(white.equals(latinx));
-        
+
         assertFalse(white.equals(white2));
         assertFalse(asian.equals(black2));
         assertTrue(asian.equals(asian2));
-        
+
     }
-    
+
+
+    /**
+     * tests rewriteCfr() method
+     */
+
+    public void testRewriteCfr() {
+
+    }
+
+
+    /**
+     * tests CFRComparator() method
+     */
+
+    public void testCFRComparator() {
+
+    }
+
+
+    /**
+     * tests AlphaComparator() method
+     */
+
+    public void testAlphaComparator() {
+
+    }
+
 }

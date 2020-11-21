@@ -5,7 +5,6 @@ package prj5;
 // do.
 // -- olsenbudanur
 
-
 /**
  * This class represents the individual states from the Covid-19 data. It stores
  * the race information regarding to a specific state.
@@ -110,8 +109,8 @@ public class State {
     /**
      * Checks if two races are equal.
      * 
-     * @param obj 
-     *          The other object to be compared.
+     * @param obj
+     *            The other object to be compared.
      * @return whether the two races are equal or not
      */
     @Override
@@ -124,9 +123,9 @@ public class State {
         }
         if (this.getClass() == obj.getClass()) {
             State other = (State)obj;
-            
-            return this.getRaces().equals(other.getRaces()) 
-                && this.getName().equals(other.getName());
+
+            return this.getRaces().equals(other.getRaces()) && this.getName()
+                .equals(other.getName());
         }
         else {
             return false;
