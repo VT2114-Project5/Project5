@@ -20,20 +20,28 @@ public class Input {
      * This is the main method of the project.
      * 
      * @param args 
-     *            File where the data can be found
+     *          [0]File where the data can be found
+     *          [1] --gui     Opens the visualization front-end.
      * @throws FileNotFoundException
      *             if file is not found
      */
     public static void main(String[] args) throws FileNotFoundException {
 
+
         DocumentReader reader = new DocumentReader(args[0]);
 
         LinkedList<State> states = reader.getStates();
 
-        for (State state : states) {
-            System.out.println(state.toString());
-
+        // Remove this when finished with front-end.
+        if (args.length > 1 && args[1].equals("--gui")) {
+            new GUIWindow(new GUIController(states));
         }
-    }
+        else { 
+            for (State state : states) {
+                System.out.println(state.toString());
 
+            }
+        }
+
+    }
 }
