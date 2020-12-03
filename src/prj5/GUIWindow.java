@@ -222,14 +222,16 @@ public class GUIWindow {
             System.out.println(barHeight);
             Shape bar = new Shape(offset, y, BAR_WIDTH, barHeight, Color.BLUE);
             window.addShape(bar);
+
             // builds text for the race under the bar
-            TextShape race = new TextShape(offset, y - 1, races[i].getName(),
-                Color.black);
+            TextShape race = new TextShape(offset - BAR_WIDTH, y + barHeight,
+                races[i].getName(), Color.black);
             race.setBackgroundColor(Color.white);
             window.addShape(race);
+
             // builds text for the cfr under the race
-            TextShape cfr = new TextShape(offset, y - 2, races[i].getCfr()
-                + "%", Color.black);
+            TextShape cfr = new TextShape(offset - BAR_WIDTH, y + barHeight
+                + 20, races[i].getCfr() + "%", Color.black);
             cfr.setBackgroundColor(Color.white);
             window.addShape(cfr);
 
