@@ -10,7 +10,7 @@ import cs2.WindowSide;
 /**
  * Provides the front-end to visualize COVID-19 CFR data.
  * 
- * @author Adam Oswald (adamoswald)
+ * @author Adam Oswald (adamoswald) Ariel Carter(arielc19)
  * @version 11.30.2020
  *
  */
@@ -29,8 +29,8 @@ public class GUIWindow {
     private Button showNc;
     private Button showTn;
     private Button showVa;
-    
-    private final int BAR_OFFSET = 137; //WIN_WIDTH / 6 (we need n + 1 spaces)
+
+    private final int BAR_OFFSET = 137; // WIN_WIDTH / 6 (we need n + 1 spaces)
     private final int BAR_WIDTH = 10; // Calculated using a proportion.
     private final int BAR_Y = 233; // Calculated using a proportion.
     private final int BAR_FACTOR = 209;
@@ -39,8 +39,9 @@ public class GUIWindow {
      * Creates a new GUIWindow and position the buttons.
      * 
      * @param guiC
-     *          A GUIController object, which provides what data should the GUI
-     *          visualize.s
+     *            A GUIController object, which provides what data should the
+     *            GUI
+     *            visualize.s
      */
     public GUIWindow(GUIController guiC) {
         window = new Window();
@@ -55,7 +56,7 @@ public class GUIWindow {
         sortCfr.onClick(this, "clickedSortCfr");
 
         window.addButton(sortAlpha, WindowSide.NORTH);
-        window.addButton(quit,  WindowSide.NORTH);
+        window.addButton(quit, WindowSide.NORTH);
         window.addButton(sortCfr, WindowSide.NORTH);
 
         showDc = new Button("Represent DC");
@@ -79,9 +80,12 @@ public class GUIWindow {
         window.addButton(showVa, WindowSide.SOUTH);
     }
 
+
     /**
      * Perform action when "Sort by CFR" gets clicked
-     * @param button the button that is the "Sort by CFR" button
+     * 
+     * @param button
+     *            the button that is the "Sort by CFR" button
      */
     public void clickedSortCfr(Button button) {
         if (reader.isReady()) {
@@ -90,9 +94,12 @@ public class GUIWindow {
         }
     }
 
+
     /**
      * Perform action when "Sort by Alpha" gets clicked
-     * @param button the button that is the "Sort by Alpha" button
+     * 
+     * @param button
+     *            the button that is the "Sort by Alpha" button
      */
     public void clickedSortAlpha(Button button) {
         if (reader.isReady()) {
@@ -101,104 +108,131 @@ public class GUIWindow {
         }
     }
 
+
     /**
      * Perform action when "Quit" gets clicked
-     * @param button the button that is the "Quit" button
+     * 
+     * @param button
+     *            the button that is the "Quit" button
      */
     public void clickedQuit(Button button) {
         System.exit(0);
     }
 
+
     /**
      * Perform action when "Represent DC" gets clicked
-     * @param button the button that is the "Represent DC" button
+     * 
+     * @param button
+     *            the button that is the "Represent DC" button
      */
     public void clickedDc(Button button) {
         reader.setCurrentState("DC");
         update();
     }
 
+
     /**
      * Perform action when "Represent GA" gets clicked
-     * @param button the button that is the "Represent GA" button
+     * 
+     * @param button
+     *            the button that is the "Represent GA" button
      */
     public void clickedGa(Button button) {
         reader.setCurrentState("GA");
         update();
     }
 
+
     /**
      * Perform action when "Represent MD" gets clicked
-     * @param button the button that is the "Represent MD" button
+     * 
+     * @param button
+     *            the button that is the "Represent MD" button
      */
     public void clickedMd(Button button) {
         reader.setCurrentState("MD");
         update();
     }
 
+
     /**
      * Perform action when "Represent NC" gets clicked
-     * @param button the button that is the "Represent NC" button
+     * 
+     * @param button
+     *            the button that is the "Represent NC" button
      */
     public void clickedNc(Button button) {
         reader.setCurrentState("NC");
         update();
     }
 
+
     /**
      * Perform action when "Represent TN" gets clicked
-     * @param button the button that is the "Represent TN" button
+     * 
+     * @param button
+     *            the button that is the "Represent TN" button
      */
     public void clickedTn(Button button) {
         reader.setCurrentState("TN");
         update();
     }
 
+
     /**
      * Perform action when "Represent VA" gets clicked
-     * @param button the button that is the "Represent VA" button
+     * 
+     * @param button
+     *            the button that is the "Represent VA" button
      */
     public void clickedVa(Button button) {
         reader.setCurrentState("VA");
         update();
     }
+
+
     /**
      * Redraws everything on the screen and redraws based on the data of the
      * collection.
      */
     private void update() {
         window.removeAllShapes();
-        drawText();
         drawBars();
         System.out.println(window.getGraphPanelHeight());
     }
-    
+
+
     /**
-     * Draws the text under the bar graphs.
-     */
-    private void drawText() {
-        // TODO
-    }
-    
-    /**
-     * Draws the bar graphs and places them in the correct positions and scale.
+     * Draws the bar graphs and the text and places them in the correct
+     * positions and scale.
      */
     private void drawBars() {
         Race[] races = reader.getRaceArray();
         int barHeight = 0;
-        
+
         for (int i = 0; i < 5; i++) {
             int offset = BAR_OFFSET + BAR_OFFSET * i;
-            
+
             if (races[i].getCfr() >= 0) { // Don't draw when CFR = -1
-                barHeight = (int)(BAR_FACTOR * (races[i].getCfr()/10.0));
+                barHeight = (int)(BAR_FACTOR * (races[i].getCfr() / 10.0));
+
             }
             int y = BAR_Y - barHeight;
             System.out.println(barHeight);
             Shape bar = new Shape(offset, y, BAR_WIDTH, barHeight, Color.BLUE);
-            
-            
             window.addShape(bar);
+            // builds text for the race under the bar
+            TextShape race = new TextShape(offset, y - 1, races[i].getName(),
+                Color.black);
+            race.setBackgroundColor(Color.white);
+            window.addShape(race);
+            // builds text for the cfr under the race
+            TextShape cfr = new TextShape(offset, y - 2, races[i].getCfr()
+                + "%", Color.black);
+            cfr.setBackgroundColor(Color.white);
+            window.addShape(cfr);
+
             barHeight = 0;
         }
     }
