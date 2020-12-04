@@ -221,6 +221,14 @@ public class GUIWindow {
         Race[] races = reader.getRaceArray();
         int barHeight = 0;
 
+        TextShape title = new TextShape(0, 0, reader.getActiveState() 
+            + " Case Fatality Ratios by Race", Color.BLACK);
+        
+        title.moveTo((window.getGraphPanelWidth() - title.getWidth()) / 2,
+            window.getGraphPanelHeight() - (window.getGraphPanelHeight() - 20));
+        
+        window.addShape(title); 
+        
         for (int i = 0; i < 5; i++) {
             int offset = barOffset + barOffset * i;
 
