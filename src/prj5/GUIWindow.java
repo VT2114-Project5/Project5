@@ -17,7 +17,7 @@ import cs2.WindowSide;
 /**
  * Provides the front-end to visualize COVID-19 CFR data.
  * 
- * @author Adam Oswald (adamoswald) 
+ * @author Adam Oswald (adamoswald)
  * @version 12.03.2020
  * 
  * @author Ariel Carter (arielc19)
@@ -237,13 +237,13 @@ public class GUIWindow {
             Shape bar = new Shape(offset, y, BAR_WIDTH, barHeight, Color.BLUE);
             window.addShape(bar);
 
-            // builds text for the race under the bar
+            // Builds text for the race under the bar
             TextShape race = new TextShape(offset - BAR_WIDTH, y + barHeight,
                 races[i].getName(), Color.black);
             race.setBackgroundColor(Color.white);
             window.addShape(race);
 
-            // builds text for the cfr under the race
+            // Builds text for the cfr under the race
 
             if (races[i].getCfr() >= 0) {
                 TextShape cfr = new TextShape(offset - BAR_WIDTH, y + barHeight

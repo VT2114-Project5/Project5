@@ -53,15 +53,16 @@ public class GUIControllerTest extends TestCase {
     public void testInitializeNull() {
         LinkedList<State> nullList = null;
         GUIController testControl = null;
-
+        Exception exception = null;
         try {
             testControl = new GUIController(nullList);
             fail("Tried to setup a controller that uses a null object.");
             testControl.getActiveState();
         }
-        catch (IllegalArgumentException e) {
-            // This catch block has been left blank.
+        catch (Exception e) {
+            exception = e;
         }
+        assertNotNull(exception);
     }
 
 

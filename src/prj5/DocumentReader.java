@@ -52,6 +52,7 @@ public class DocumentReader {
         LinkedList<State> states = new LinkedList<State>();
         String currentLine = file.nextLine();
 
+        // Goes through each line
         while (file.hasNextLine()) {
             LinkedList<Race> races = new LinkedList<Race>();
             currentLine = file.nextLine();
