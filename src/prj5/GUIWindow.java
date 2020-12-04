@@ -210,7 +210,6 @@ public class GUIWindow {
         window.removeAllShapes();
         barOffset = window.getWidth() / 6;
         drawBars();
-        System.out.println(window.getGraphPanelHeight());
     }
 
 
@@ -235,7 +234,6 @@ public class GUIWindow {
                 window.addShape(noCfr);
             }
             int y = BAR_Y - barHeight;
-            System.out.println(barHeight);
             Shape bar = new Shape(offset, y, BAR_WIDTH, barHeight, Color.BLUE);
             window.addShape(bar);
 
