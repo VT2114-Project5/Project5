@@ -27,7 +27,7 @@ public class RaceTest extends TestCase {
     private Race asian2;
 
     /**
-     * sets up the test cases
+     * Sets up the test cases.
      */
 
     public void setUp() {
@@ -43,7 +43,7 @@ public class RaceTest extends TestCase {
 
 
     /**
-     * tests getCases() methods
+     * Tests getCases() methods.
      */
 
     public void testGetCases() {
@@ -55,7 +55,7 @@ public class RaceTest extends TestCase {
 
 
     /**
-     * tests getDeaths() method
+     * Tests getDeaths() method.
      */
 
     public void testGetDeaths() {
@@ -67,7 +67,7 @@ public class RaceTest extends TestCase {
 
 
     /**
-     * tests getCfr() method
+     * Tests getCfr() method.
      */
 
     public void testGetCfr() {
@@ -85,7 +85,7 @@ public class RaceTest extends TestCase {
 
 
     /**
-     * tests getName()
+     * Tests getName().
      */
 
     public void testGetName() {
@@ -97,7 +97,7 @@ public class RaceTest extends TestCase {
 
 
     /**
-     * tests toString() method
+     * Tests toString() method.
      */
 
     public void testToString() {
@@ -109,7 +109,7 @@ public class RaceTest extends TestCase {
 
 
     /**
-     * tests equals() method
+     * Tests equals() method.
      */
 
     public void testEquals() {

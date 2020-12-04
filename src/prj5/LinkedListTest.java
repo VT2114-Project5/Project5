@@ -30,9 +30,8 @@ public class LinkedListTest extends TestCase {
     private Race latinx;
 
     /**
-     * sets up test cases
+     * Sets up test cases.
      */
-
     public void setUp() {
         list1 = new LinkedList<Race>();
         list2 = new LinkedList<Race>();
@@ -45,9 +44,8 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests add(int index, T obj) method
+     * Tests add(int index, T obj) method.
      */
-
     public void testAdd() {
         assertTrue(list1.isEmpty());
         list1.add(0, white);
@@ -70,7 +68,7 @@ public class LinkedListTest extends TestCase {
         catch (IndexOutOfBoundsException e) {
             exception = e;
         }
-        assertNotNull(exception); 
+        assertNotNull(exception);
         exception = null;
         try {
             list1.add(-1, latinx);
@@ -78,14 +76,13 @@ public class LinkedListTest extends TestCase {
         catch (IndexOutOfBoundsException e) {
             exception = e;
         }
-        assertNotNull(exception);  
+        assertNotNull(exception);
     }
 
 
     /**
-     * tests add(T obj) method
+     * Tests add(T obj) method.
      */
-
     public void testAdd2() {
         list1.add(white);
         assertFalse(list1.isEmpty());
@@ -95,9 +92,8 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests getEntry() method
+     * Tests getEntry() method.
      */
-
     public void testGetEntry() {
         list1.add(white);
         list1.add(black);
@@ -111,7 +107,7 @@ public class LinkedListTest extends TestCase {
         catch (IndexOutOfBoundsException e) {
             exception = e;
         }
-        assertNotNull(exception); 
+        assertNotNull(exception);
         exception = null;
         try {
             list1.getEntry(5);
@@ -119,14 +115,13 @@ public class LinkedListTest extends TestCase {
         catch (IndexOutOfBoundsException e) {
             exception = e;
         }
-        assertNotNull(exception); 
+        assertNotNull(exception);
     }
 
 
     /**
-     * tests size() method
+     * Tests size() method.
      */
-
     public void testSize() {
         assertEquals(0, list1.size());
         list1.add(white);
@@ -139,9 +134,8 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests isEmpty() method
+     * Tests isEmpty() method.
      */
-
     public void testIsEmpty() {
         assertTrue(list1.isEmpty());
         list1.add(white);
@@ -150,7 +144,7 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests remove(T obj) method
+     * Tests remove(T obj) method.
      */
     public void testRemove() {
         list1.add(white);
@@ -168,7 +162,7 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests remove(int index) method
+     * Tests remove(int index) method.
      */
     public void testRemove2() {
         list1.add(white);
@@ -199,9 +193,8 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests replace() method
+     * Tests replace() method.
      */
-
     public void testReplace() {
         list1.add(white);
         list1.add(black);
@@ -233,9 +226,8 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests contains() method
+     * Tests contains() method.
      */
-
     public void testContains() {
         list1.add(white);
         list1.add(black);
@@ -248,7 +240,7 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests clear() method
+     * Tests clear() method.
      */
 
     public void testClear() {
@@ -262,7 +254,7 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests toString() method
+     * Tests toString() method.
      */
 
     public void testToString() {
@@ -277,16 +269,16 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests equals() method
+     * Tests equals() method.
      */
 
     public void testEquals() {
         list1.add(white);
         list1.add(black);
         list1.add(latinx);
-        
+
         LinkedList<Race> nullList = null;
-        
+
         assertTrue(list1.equals(list1));
         assertFalse(list1.equals(nullList));
         assertFalse(list1.equals("Hello"));
@@ -313,7 +305,7 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests toArray() method
+     * Tests toArray() method.
      */
 
     public void testToArray() {
@@ -330,7 +322,7 @@ public class LinkedListTest extends TestCase {
 
 
     /**
-     * tests iterator() method
+     * Tests iterator() method.
      */
 
     public void testIterator() {
@@ -348,11 +340,11 @@ public class LinkedListTest extends TestCase {
         catch (Exception e) {
             // This catch block has been intentionally left blank.
         }
-        
+
         assertTrue(iter.hasNext());
         assertEquals(iter.next(), white);
         iter.remove();
-        
+
         try {
             iter.remove();
             fail("Remove was successful on an already removed element");
@@ -374,7 +366,7 @@ public class LinkedListTest extends TestCase {
         assertEquals(list1.getEntry(2), black);
         iter.remove();
         assertFalse(iter.hasNext());
-        
+
         try {
             iter.next();
             fail("Next was successful at end of list");
@@ -385,6 +377,6 @@ public class LinkedListTest extends TestCase {
         // Ensuring tail gets updated
         list1.add(latinx);
         assertEquals(list1.getEntry(2), latinx);
-        
+
     }
 }

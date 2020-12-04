@@ -19,7 +19,7 @@ import java.util.NoSuchElementException;
  * @version 11/19/2020
  *
  * @param <T>
- *          The data type
+ *            The data type
  */
 public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
 
@@ -33,6 +33,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
     public LinkedList() {
         size = 0;
     }
+
 
     /**
      * Adds the object to the end of the list.
@@ -68,10 +69,12 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         size++;
     }
 
+
     /**
      * Gets the node right before the specified. Returns the node at index - 1.
-     * @param index 
-     *          The index of the node right after the target node
+     * 
+     * @param index
+     *            The index of the node right after the target node
      * @return The Node object of the target node.
      */
     private Node<T> getNodeBefore(int index) {
@@ -85,12 +88,13 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         return nodeBefore;
     }
 
+
     /**
      * Adds the object to the start of the list.
      *
      * @param obj
      *            the object to add
-     * @throws IllegalArgumentException 
+     * @throws IllegalArgumentException
      *             if obj is null
      */
     @Override
@@ -98,14 +102,15 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         add(size(), obj);
     }
 
+
     /**
      * Gets the entry at a specific index without removing the element from
      * the list
      * 
-     * @param index 
-     *              The index of the element to access
+     * @param index
+     *            The index of the element to access
      * @throws IndexOutOfBoundsException
-     *              if index is less than zero or greater than size
+     *             if index is less than zero or greater than size
      * @return The element at the given index.
      */
     @Override
@@ -116,8 +121,8 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         Node<T> beforeNode = getNodeBefore(index); // throws IndexOOB
         return beforeNode.next.getData();
 
-
     }
+
 
     /**
      * Gets the number of elements in the list
@@ -129,6 +134,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         return size;
     }
 
+
     /**
      * Checks if the list is empty
      *
@@ -138,6 +144,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
     public boolean isEmpty() {
         return size == 0;
     }
+
 
     /**
      * Removes the first instance of the given item from the list
@@ -150,7 +157,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
     public boolean remove(T obj) {
         Node<T> currentNode = head;
 
-        if (head.getData().equals(obj)) {   // Case 1: head needs to be removed
+        if (head.getData().equals(obj)) { // Case 1: head needs to be removed
             head = head.next;
             size--;
             return true;
@@ -173,6 +180,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         }
         return false;
     }
+
 
     /**
      * Removes the object at the given position
@@ -201,17 +209,18 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
 
     }
 
+
     /**
      * Replaces a selected element data based on index with a new one. Doesn't
      * change the size of the list.
      * 
      * @param index
-     *              The index to have it's data replaced
-     * @param newEntry 
-     *              The new data that is replacing the existing data at the
-     * current index
+     *            The index to have it's data replaced
+     * @param newEntry
+     *            The new data that is replacing the existing data at the
+     *            current index
      * @throws IndexOutOfBoundsException
-     *              if index is less than zero or greater than size
+     *             if index is less than zero or greater than size
      */
     @Override
     public void replace(int index, T newEntry) {
@@ -226,6 +235,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
             nodeBefore.next.setData(newEntry);
         }
     }
+
 
     /**
      * Checks if the list contains the given object
@@ -249,6 +259,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         return false;
     }
 
+
     /**
      * Removes all of the elements from the list
      *
@@ -259,6 +270,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         head = null;
         tail = null;
     }
+
 
     /**
      * Prints the contents as a String. Items are in curly brackets ("{}"),
@@ -276,7 +288,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
                 builder.append(element.toString());
                 if (currNode.next != null) {
                     builder.append(", ");
-                }  
+                }
                 currNode = currNode.getNext();
             }
         }
@@ -285,11 +297,12 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         return builder.toString();
     }
 
+
     /**
      * Checks if two lists are equal to each other in terms of items and order.
      * 
      * @param obj
-     *          The other list to be compared
+     *            The other list to be compared
      * @return True if lists are equal, false if they are different.
      */
     @Override
@@ -320,8 +333,10 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         return false;
     }
 
+
     /**
      * Turn the contents of the list into an array
+     * 
      * @return Array representation of the current list.
      */
     public Object[] toArray() {
@@ -340,13 +355,14 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
      * Sorts items respective to the comparator given.
      * 
      * @param <T>
-     *          The data type
+     *            The data type
      * @param comp
-     *          The Comparator used to compare the items
+     *            The Comparator used to compare the items
      * @param list
-     *          The list to be sorted.
+     *            The list to be sorted.
      */
-    public static <T> void sort(LinkedList<T> list, 
+    public static <T> void sort(
+        LinkedList<T> list,
         Comparator<? super T> comp) {
 
         Iterator<T> iter = list.iterator();
@@ -355,8 +371,8 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
             T curElement = iter.next();
             int index = 0;
 
-            while (index < sortedList.size 
-                && comp.compare(curElement, sortedList.getEntry(index)) >= 0) {
+            while (index < sortedList.size && comp.compare(curElement,
+                sortedList.getEntry(index)) >= 0) {
 
                 index++;
             }
@@ -365,6 +381,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         }
         list.head = sortedList.head;
     }
+
 
     /**
      * Returns an Iterator object of the list.
@@ -382,9 +399,10 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
      * @author Adam Oswald <adamoswald>
      * @version 11/18/2020
      *
-     * @param <T> The type our iterator accepts.
+     * @param <T>
+     *            The type our iterator accepts.
      */
-    private class ListIterator<E> implements Iterator<T>  {
+    private class ListIterator<E> implements Iterator<T> {
 
         // Running node method
         private Node<T> prevNode;
@@ -398,6 +416,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
             cursorNode = new Node<T>(null, head);
         }
 
+
         /**
          * Checks if there are more elements in the list
          *
@@ -408,8 +427,9 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
             return (cursorNode.next != null);
         }
 
+
         /**
-         *Gets the next value in the list
+         * Gets the next value in the list
          *
          * @return the next value
          * @throws NoSuchElementException
@@ -427,12 +447,13 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
             return temp;
         }
 
+
         /**
          * Removes the last object returned with next() from the list
          *
          * @throws IllegalStateException
          *             if next has not been called yet
-         *        and  if the element has already been removed
+         *             and if the element has already been removed
          */
         @Override
         public void remove() {
@@ -450,10 +471,12 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         }
     }
 
+
     /**
      * Basic Node implementation.
      * 
-     * @param <T> the data type
+     * @param <T>
+     *            the data type
      * 
      * @author Adam Oswald (adamoswald)
      * @version 2020.11.18
@@ -465,44 +488,50 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
 
         /**
          * Create a new node with no specified next node
+         * 
          * @param data
-         *          The data to be set for the new node.
+         *            The data to be set for the new node.
          */
         public Node(T data) {
             this(data, null);
         }
 
+
         /**
          * Create a new node with preset values.
+         * 
          * @param data
-         *          Data contained in node
+         *            Data contained in node
          * @param next
-         *          The next referenced node
+         *            The next referenced node
          */
         public Node(T data, Node<T> next) {
             this.data = data;
             this.next = next;
         }
 
+
         /**
          * Sets the data for the current Node object.
          * 
          * @param newData
-         *          Data of the new Node object.
+         *            Data of the new Node object.
          */
         public void setData(T newData) {
             data = newData;
         }
 
+
         /**
          * Sets the next node in the chain
          * 
          * @param newNext
-         *          The new node to be inserted
+         *            The new node to be inserted
          */
         public void setNext(Node<T> newNext) {
             next = newNext;
         }
+
 
         /**
          * Get the next node in the chain
@@ -512,6 +541,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
         public Node<T> getNext() {
             return next;
         }
+
 
         /**
          * Get the data contained in the node.

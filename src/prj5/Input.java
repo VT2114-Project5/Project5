@@ -23,14 +23,13 @@ public class Input {
     /**
      * This is the main method of the project.
      * 
-     * @param args 
-     *          [0]File where the data can be found
-     *          [1] --gui     Opens the visualization front-end.
+     * @param args
+     *            [0]File where the data can be found
+     *            [1] --gui Opens the visualization front-end.
      * @throws FileNotFoundException
      *             if file is not found
      */
     public static void main(String[] args) throws FileNotFoundException {
-
 
         DocumentReader reader = new DocumentReader(args[0]);
 
@@ -40,7 +39,7 @@ public class Input {
         if (args.length > 1 && args[1].equals("--gui")) {
             new GUIWindow(new GUIController(states));
         }
-        else { 
+        else {
             for (State state : states) {
                 System.out.println(state.toString());
 

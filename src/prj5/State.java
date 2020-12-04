@@ -6,6 +6,7 @@
 // -- arielc19, adamoswald, olsenbudanur
 
 package prj5;
+
 /**
  * This class represents the individual states from the Covid-19 data. It stores
  * the race information regarding to a specific state.
@@ -132,17 +133,17 @@ public class State {
         }
         if (this.getClass() == obj.getClass()) {
             State other = (State)obj;
-            
+
             // Check if name or size of Race list does not equal
-            if (this.getRaces().length != other.getRaces().length
-                || !this.getName().equals(other.getName())) {
-                
+            if (this.getRaces().length != other.getRaces().length || !this
+                .getName().equals(other.getName())) {
+
                 return false;
             }
-            
+
             Race[] thisArr = this.getRaces();
             Race[] otherArr = other.getRaces();
-            
+
             // Then check each element of the array.
             for (int i = 0; i < thisArr.length; i++) {
                 if (!thisArr[i].equals(otherArr[i])) {
