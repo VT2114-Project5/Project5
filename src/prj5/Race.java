@@ -3,9 +3,10 @@
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
-// -- olsenbudanur, adamoswald
+// -- arielc19, adamoswald, olsenbudanur
 
 package prj5;
+
 import java.util.Comparator;
 
 /**
@@ -16,8 +17,11 @@ import java.util.Comparator;
  * @author Olsen Budanur olsenbudanur
  * @version 11/14/2020
  * 
- * @author Adam Oswald (adamoswald) 
+ * @author Adam Oswald (adamoswald)
  * @version 11/14/2020
+ * 
+ * @author Ariel Carter (arielc19)
+ * @version 11/17/2020
  */
 public class Race {
     private String name;
@@ -130,8 +134,8 @@ public class Race {
     /**
      * Checks if two races are equal.
      * 
-     * @param obj 
-     *          The other object to be compared.
+     * @param obj
+     *            The other object to be compared.
      * 
      * @return whether the two races are equal or not
      */
@@ -145,17 +149,18 @@ public class Race {
         }
         if (this.getClass() == obj.getClass()) {
             Race other = (Race)obj;
-            
-            return this.getCases() == other.getCases() 
-                && this.getDeaths() == other.getDeaths() 
-                && this.getName().equals(other.getName());
+
+            return this.getCases() == other.getCases() && this
+                .getDeaths() == other.getDeaths() && this.getName().equals(other
+                    .getName());
         }
         else {
             return false;
         }
 
     }
-    
+
+
     /**
      * Helper method to remove the decimal point if the CFR can be represented
      * as an integer.

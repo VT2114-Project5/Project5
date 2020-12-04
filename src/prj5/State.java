@@ -1,8 +1,9 @@
-// Virginia Tech Honor Code Pledge://
+// Virginia Tech Honor Code Pledge:
+//
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
-// -- olsenbudanur
+// -- arielc19, adamoswald, olsenbudanur
 
 package prj5;
 /**
@@ -11,6 +12,9 @@ package prj5;
  * 
  * @author Olsen Budanur olsenbudanur
  * @version 11/14/2020
+ * 
+ * @author Ariel Carter (arielc19)
+ * @version 11/17/2020
  */
 public class State {
     private String name;
