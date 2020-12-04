@@ -1,3 +1,9 @@
+// Virginia Tech Honor Code Pledge://
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- adamoswald
+
 package prj5;
 
 import java.util.Iterator;
@@ -15,6 +21,8 @@ public class GUIController {
 
     private LinkedList<State> states;
     private State activeState;
+
+    private boolean isCfrSort = true;
 
     /**
      * Creates a new GUIController targeting a LinkedList of State objects.
@@ -48,9 +56,9 @@ public class GUIController {
      * Sorts the Races of the state from CFR, descending.
      */
     public void sortCfr() {
-        for (State state : states) {
-            state.sortByCFR();
-        }
+        activeState.sortByCFR();
+        isCfrSort = true;
+
     }
 
 
@@ -58,8 +66,20 @@ public class GUIController {
      * Sorts the Races of the state to lexical alphabetical order.
      */
     public void sortAlpha() {
-        for (State state : states) {
-            state.sortAlpha();
+        activeState.sortAlpha();
+        isCfrSort = false;
+    }
+
+
+    /**
+     * Maintains requested sort when switching between states.
+     */
+    private void maintainSort() {
+        if (isCfrSort) {
+            activeState.sortByCFR();
+        }
+        else {
+            activeState.sortAlpha();
         }
     }
 
@@ -82,6 +102,7 @@ public class GUIController {
             currentState = iter.next();
             if (state.equals(currentState.getName().toLowerCase())) {
                 activeState = currentState;
+                maintainSort();
                 return currentState.getName();
             }
         }

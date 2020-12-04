@@ -29,6 +29,42 @@ public class GUIControllerTest extends TestCase {
 
 
     /**
+     * Tests the maintainSort() method.
+     */
+    public void testMaintainSort() {
+        controller.setCurrentState("VA");
+        controller.sortCfr();
+        assertTrue(controller.getRaceArray()[0].getName().equals("white"));
+        controller.setCurrentState("MD");
+        assertTrue(controller.getRaceArray()[0].getName().equals("asian"));
+        controller.setCurrentState("NC");
+        assertTrue(controller.getRaceArray()[0].getName().equals("black"));
+        controller.sortAlpha();
+        assertTrue(controller.getRaceArray()[0].getName().equals("asian"));
+        controller.setCurrentState("VA");
+        assertTrue(controller.getRaceArray()[0].getName().equals("asian"));
+    }
+
+
+    /**
+     * Tests the constructor for an exception.
+     */
+    public void testInitializeNull() {
+        LinkedList<State> nullList = null;
+        GUIController testControl = null;
+
+        try {
+            testControl = new GUIController(nullList);
+            fail("Tried to setup a controller that uses a null object.");
+            testControl.getActiveState();
+        }
+        catch (IllegalArgumentException e) {
+            // This catch block has been left blank.
+        }
+    }
+
+
+    /**
      * Tests the getStateList() method.
      */
     public void testGetStateList() {
