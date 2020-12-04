@@ -25,26 +25,22 @@ public class Input {
      * 
      * @param args
      *            [0]File where the data can be found
-     *            [1] --gui Opens the visualization front-end.
      * @throws FileNotFoundException
      *             if file is not found
      */
     public static void main(String[] args) throws FileNotFoundException {
+        DocumentReader reader;
 
-        DocumentReader reader = new DocumentReader(args[0]);
-
-        LinkedList<State> states = reader.getStates();
-
-        // Remove this when finished with front-end.
-        if (args.length > 1 && args[1].equals("--gui")) {
-            new GUIWindow(new GUIController(states));
+        if (args.length == 1) {
+            reader = new DocumentReader(args[0]);
         }
         else {
-            for (State state : states) {
-                System.out.println(state.toString());
-
-            }
+            reader = new DocumentReader(
+                "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
         }
+
+        LinkedList<State> states = reader.getStates();
+        new GUIWindow(new GUIController(states));
 
     }
 }
