@@ -1,10 +1,10 @@
-package prj5;
 // Virginia Tech Honor Code Pledge://
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
 // -- olsenbudanur
 
+package prj5;
 /**
  * This class represents the individual states from the Covid-19 data. It stores
  * the race information regarding to a specific state.
