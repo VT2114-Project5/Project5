@@ -42,5 +42,9 @@ public class Input {
         LinkedList<State> states = reader.getStates();
         new GUIWindow(new GUIController(states));
 
+        for (State state : states) {
+            System.out.println(state.toString());
+        }
+
     }
 }
