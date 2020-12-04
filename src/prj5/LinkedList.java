@@ -396,7 +396,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
     /**
      * Iterator for LinkedList
      * 
-     * @author Adam Oswald <adamoswald>
+     * @author Adam Oswald (adamoswald)
      * @version 11/18/2020
      *
      * @param <T>

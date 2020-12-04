@@ -7,7 +7,6 @@
 
 package prj5;
 
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -95,18 +94,16 @@ public class GUIController {
      * @return String of the state that was found.
      */
     public String setCurrentState(String state) {
-        State currentState;
         state = state.toLowerCase();
 
-        Iterator<State> iter = states.iterator();
-        while (iter.hasNext()) {
-            currentState = iter.next();
+        for (State currentState : states) {
             if (state.equals(currentState.getName().toLowerCase())) {
                 activeState = currentState;
                 maintainSort();
                 return currentState.getName();
             }
         }
+
         throw new NoSuchElementException("State could not be found.");
     }
 
