@@ -1,3 +1,9 @@
+// Virginia Tech Honor Code Pledge://
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- adamoswald, arielc19
+
 package prj5;
 
 import java.awt.Color;
@@ -11,7 +17,7 @@ import cs2.WindowSide;
  * Provides the front-end to visualize COVID-19 CFR data.
  * 
  * @author Adam Oswald (adamoswald) Ariel Carter(arielc19)
- * @version 11.30.2020
+ * @version 12.03.2020
  *
  */
 public class GUIWindow {

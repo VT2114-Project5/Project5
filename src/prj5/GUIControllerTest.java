@@ -20,7 +20,6 @@ public class GUIControllerTest extends TestCase {
     private GUIController controller;
 
     public void setUp() throws Exception {
-        
         read = new DocumentReader("Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
         controller = new GUIController(read.getStates());
     }
