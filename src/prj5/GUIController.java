@@ -21,6 +21,7 @@ public class GUIController {
 
     private LinkedList<State> states;
     private State activeState;
+    private boolean isCfrSort = true;
     
     /**
      * Creates a new GUIController targeting a LinkedList of State objects.
@@ -52,6 +53,7 @@ public class GUIController {
      */
     public void sortCfr() {
         activeState.sortByCFR();
+        isCfrSort = true;
     }
     
     /**
@@ -59,8 +61,21 @@ public class GUIController {
      */
     public void sortAlpha() {
         activeState.sortAlpha();
+        isCfrSort = false;
     }
 
+    /**
+     * Maintains requested sort when switching between states.
+     */
+    private void maintainSort() {
+        if (isCfrSort) {
+            activeState.sortByCFR();
+        }
+        else {
+            activeState.sortAlpha();
+        }
+    }
+    
     /**
      * Sets the active state the controller is currently using.
      * @param state 
@@ -78,6 +93,7 @@ public class GUIController {
             currentState = iter.next();
             if (state.equals(currentState.getName().toLowerCase())) {
                 activeState = currentState;
+                maintainSort();
                 return currentState.getName();
             }
         }
