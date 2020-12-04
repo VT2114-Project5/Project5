@@ -15,23 +15,25 @@ public class GUIController {
 
     private LinkedList<State> states;
     private State activeState;
-    
+
     /**
      * Creates a new GUIController targeting a LinkedList of State objects.
      * 
      * @param stateList
-     *          LinkedList of State Objects the controller should interact with
+     *            LinkedList of State Objects the controller should interact
+     *            with
      * @throws IllegalArgumentException
-     *          If list that was passed is null.
+     *             If list that was passed is null.
      */
     public GUIController(LinkedList<State> stateList) {
         if (stateList == null) {
             throw new IllegalArgumentException("List passed to GUI is null");
         }
-        
+
         states = stateList;
     }
-    
+
+
     /**
      * Returns the states that the controller can choose from.
      * 
@@ -40,33 +42,41 @@ public class GUIController {
     public LinkedList<State> getStateList() {
         return states;
     }
-    
+
+
     /**
      * Sorts the Races of the state from CFR, descending.
      */
     public void sortCfr() {
-        activeState.sortByCFR();
+        for (State state : states) {
+            state.sortByCFR();
+        }
     }
-    
+
+
     /**
      * Sorts the Races of the state to lexical alphabetical order.
      */
     public void sortAlpha() {
-        activeState.sortAlpha();
+        for (State state : states) {
+            state.sortAlpha();
+        }
     }
+
 
     /**
      * Sets the active state the controller is currently using.
-     * @param state 
-     *          The String of the state to look for. Case-insensitive
-     * @throws NoSuchElementException 
-     *              The State could not be found from the collection
+     * 
+     * @param state
+     *            The String of the state to look for. Case-insensitive
+     * @throws NoSuchElementException
+     *             The State could not be found from the collection
      * @return String of the state that was found.
      */
     public String setCurrentState(String state) {
         State currentState;
         state = state.toLowerCase();
-        
+
         Iterator<State> iter = states.iterator();
         while (iter.hasNext()) {
             currentState = iter.next();
@@ -77,7 +87,8 @@ public class GUIController {
         }
         throw new NoSuchElementException("State could not be found.");
     }
-    
+
+
     /**
      * Returns the state the controller is currently on. (The active state)
      * 
@@ -89,12 +100,13 @@ public class GUIController {
         }
         return activeState.getName();
     }
-    
+
+
     /**
      * Gets the Races in the current state and prints it to an array.
      * 
      * @throws IllegalArgumentException
-     *          A state has not be set in the controller.
+     *             A state has not be set in the controller.
      * @return An array of Race objects
      */
     public Race[] getRaceArray() {
@@ -103,7 +115,8 @@ public class GUIController {
         }
         return activeState.getRaces();
     }
-    
+
+
     /**
      * See if a state is currently loaded into the controller.
      * 

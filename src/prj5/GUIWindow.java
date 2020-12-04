@@ -30,7 +30,7 @@ public class GUIWindow {
     private Button showTn;
     private Button showVa;
 
-    private final int BAR_OFFSET = 137; // WIN_WIDTH / 6 (we need n + 1 spaces)
+    private int barOffset; // WIN_WIDTH / 6 (we need n + 1 spaces)
     private final int BAR_WIDTH = 10; // Calculated using a proportion.
     private final int BAR_Y = 233; // Calculated using a proportion.
     private final int BAR_FACTOR = 209;
@@ -45,6 +45,7 @@ public class GUIWindow {
      */
     public GUIWindow(GUIController guiC) {
         window = new Window();
+        barOffset = window.getWidth() / 6;
         window.setTitle("adamoswald, olsenbudanur, arielc19");
         reader = guiC;
 
@@ -198,6 +199,7 @@ public class GUIWindow {
      */
     private void update() {
         window.removeAllShapes();
+        barOffset = window.getWidth() / 6;
         drawBars();
         System.out.println(window.getGraphPanelHeight());
     }
@@ -212,11 +214,16 @@ public class GUIWindow {
         int barHeight = 0;
 
         for (int i = 0; i < 5; i++) {
-            int offset = BAR_OFFSET + BAR_OFFSET * i;
+            int offset = barOffset + barOffset * i;
 
             if (races[i].getCfr() >= 0) { // Don't draw when CFR = -1
                 barHeight = (int)(BAR_FACTOR * (races[i].getCfr() / 10.0));
-
+            }
+            else { // Draws "NA" instead of a bar if CFR = -1.
+                TextShape noCfr = new TextShape(offset, BAR_Y - 20, "NA",
+                    Color.black);
+                noCfr.setBackgroundColor(Color.white);
+                window.addShape(noCfr);
             }
             int y = BAR_Y - barHeight;
             System.out.println(barHeight);
@@ -230,10 +237,13 @@ public class GUIWindow {
             window.addShape(race);
 
             // builds text for the cfr under the race
-            TextShape cfr = new TextShape(offset - BAR_WIDTH, y + barHeight
-                + 20, races[i].getCfr() + "%", Color.black);
-            cfr.setBackgroundColor(Color.white);
-            window.addShape(cfr);
+
+            if (races[i].getCfr() >= 0) {
+                TextShape cfr = new TextShape(offset - BAR_WIDTH, y + barHeight
+                    + 20, races[i].getCfr() + "%", Color.black);
+                cfr.setBackgroundColor(Color.white);
+                window.addShape(cfr);
+            }
 
             barHeight = 0;
         }

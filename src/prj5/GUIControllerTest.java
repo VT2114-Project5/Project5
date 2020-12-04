@@ -19,17 +19,26 @@ public class GUIControllerTest extends TestCase {
     private DocumentReader read;
     private GUIController controller;
 
+    /**
+     * Sets up for the test methods.
+     */
     public void setUp() throws Exception {
         read = new DocumentReader("Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
         controller = new GUIController(read.getStates());
     }
 
 
+    /**
+     * Tests the getStateList() method.
+     */
     public void testGetStateList() {
         assertEquals(controller.getStateList(), read.getStates());
     }
 
 
+    /**
+     * Tests the sortCfr() method.
+     */
     public void testSortCfr() {
         controller.setCurrentState("VA");
         controller.sortCfr();
@@ -47,6 +56,9 @@ public class GUIControllerTest extends TestCase {
     }
 
 
+    /**
+     * Tests the sortAlpha() method.
+     */
     public void testSortAlpha() {
         controller.setCurrentState("VA");
         controller.sortAlpha();
@@ -64,6 +76,9 @@ public class GUIControllerTest extends TestCase {
     }
 
 
+    /**
+     * Tests the setCurrentState() method.
+     */
     public void testSetCurrentState() {
         controller.setCurrentState("VA");
         assertEquals(controller.getActiveState(), "VA");
@@ -96,6 +111,9 @@ public class GUIControllerTest extends TestCase {
     }
 
 
+    /**
+     * Tests the getActiveState() method.
+     */
     public void testGetActiveState() {
         assertNull(controller.getActiveState());
 
@@ -104,6 +122,9 @@ public class GUIControllerTest extends TestCase {
     }
 
 
+    /**
+     * Tests the getRaceArray() method.
+     */
     public void testGetRaceArray() {
         Exception exception = null;
 
@@ -130,6 +151,9 @@ public class GUIControllerTest extends TestCase {
     }
 
 
+    /**
+     * Tests the isReady() method.
+     */
     public void testIsReady() {
         assertFalse(controller.isReady());
 
