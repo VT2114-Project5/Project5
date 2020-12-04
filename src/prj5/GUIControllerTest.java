@@ -20,11 +20,25 @@ public class GUIControllerTest extends TestCase {
     private GUIController controller;
 
     public void setUp() throws Exception {
+        
         read = new DocumentReader("Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
         controller = new GUIController(read.getStates());
     }
 
 
+    public void testInitializeNull() {
+        LinkedList<State> nullList = null;
+        GUIController testControl;
+        
+        try {
+            testControl = new GUIController(nullList);
+            fail("Tried to setup a controller that uses a null object.");
+        }
+        catch (IllegalArgumentException e) {
+            // This catch block has been left blank.
+        }
+    }
+    
     public void testGetStateList() {
         assertEquals(controller.getStateList(), read.getStates());
     }
