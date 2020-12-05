@@ -28,7 +28,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
     private int size;
 
     /**
-     * Create a new Linked List
+     * Creates a new LinkedList object
      */
     public LinkedList() {
         size = 0;
@@ -71,7 +71,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
 
 
     /**
-     * Gets the node right before the specified. Returns the node at index - 1.
+     * Returns the node of the LinkedList at the specified index
      * 
      * @param index
      *            The index of the node right after the target node
@@ -90,7 +90,7 @@ public class LinkedList<T> implements ListInterface<T>, Iterable<T> {
 
 
     /**
-     * Adds the object to the start of the list.
+     * Adds the given object to the start of the list.
      *
      * @param obj
      *            the object to add

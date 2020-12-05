@@ -58,6 +58,7 @@ public class GUIWindow {
         window.setTitle("adamoswald, olsenbudanur, arielc19");
         reader = guiC;
 
+        //initializes sort and quit Buttons
         sortAlpha = new Button("Sort By Alpha");
         sortAlpha.onClick(this, "clickedSortAlpha");
         quit = new Button("Quit");
@@ -65,10 +66,12 @@ public class GUIWindow {
         sortCfr = new Button("Sort by CFR");
         sortCfr.onClick(this, "clickedSortCfr");
 
+        //Adds sort and quit button to the window
         window.addButton(sortAlpha, WindowSide.NORTH);
         window.addButton(quit, WindowSide.NORTH);
         window.addButton(sortCfr, WindowSide.NORTH);
 
+        //initialize State buttons
         showDc = new Button("Represent DC");
         showDc.onClick(this, "clickedDc");
         showGa = new Button("Represent GA");
@@ -82,6 +85,7 @@ public class GUIWindow {
         showVa = new Button("Represent VA");
         showVa.onClick(this, "clickedVa");
 
+        //Adds all of the State Buttons to the window 
         window.addButton(showDc, WindowSide.SOUTH);
         window.addButton(showGa, WindowSide.SOUTH);
         window.addButton(showMd, WindowSide.SOUTH);

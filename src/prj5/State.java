@@ -22,7 +22,7 @@ public class State {
     private LinkedList<Race> list;
 
     /**
-     * This is the constructor of the State class. It gives the state a name.
+     * This is the constructor of the State class. Creates a State object
      * 
      * @param nme
      *            the name of the state
@@ -33,7 +33,7 @@ public class State {
 
 
     /**
-     * This method sets the Race's of a state.
+     * Sets the State's list of Race objects
      * 
      * @param lst
      *            the Race's of a state
@@ -44,7 +44,7 @@ public class State {
 
 
     /**
-     * This method returns the Race's in an array format.
+     * Returns the State's list as an array of Races
      * 
      * @return Race's as an array
      */
@@ -69,7 +69,7 @@ public class State {
 
 
     /**
-     * This method returns the string representation of the State.
+     * Returns a string representation of the State's CFR information by Race
      *
      * @return string representation of the State
      */
@@ -101,7 +101,7 @@ public class State {
 
 
     /**
-     * This method sorts the Race's in alphabetical order.
+     * Sorts the State's list of Races in alphabetical order.
      */
     public void sortAlpha() {
         LinkedList.sort(list, Race.alphaComparator());
@@ -109,7 +109,7 @@ public class State {
 
 
     /**
-     * This method sorts the Race's in CFR order.
+     * Sorts the State's list of Races by CFR 
      */
     public void sortByCFR() {
         LinkedList.sort(list, Race.cfrComparator());
@@ -117,11 +117,11 @@ public class State {
 
 
     /**
-     * Checks if two races are equal.
+     * Checks if two States are the same 
      * 
      * @param obj
      *            The other object to be compared.
-     * @return whether the two races are equal or not
+     * @return true if the States are the same
      */
     @Override
     public boolean equals(Object obj) {
